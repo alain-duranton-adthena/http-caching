@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  backend:
+    build:
+      context: http-cache-demo
+      dockerfile: Dockerfile
+    ports:
+      - 8088:8088
+  frontend:
+    build:
+      context: front-end
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+    stdin_open: true
